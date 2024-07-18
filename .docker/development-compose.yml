@@ -1,7 +1,7 @@
 version: "3.1"
 
 services:
-  app:
+  app-order:
     container_name: service-order-app
     build:
       context: ../
@@ -15,7 +15,7 @@ services:
     environment:
       - ENVIRONMENT=development
 
-  nginx:
+  nginx-order:
     container_name: service-order-nginx
     image: nginx
     env_file:
@@ -24,9 +24,9 @@ services:
     networks:
       - service-order
     links:
-      - app
+      - app-order
     depends_on:
-      - app
+      - app-order
     ports:
       - "8082:80"
       - "443:443"
